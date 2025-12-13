@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kushi Estates — VMRDA Approved Layouts & Investment Plans</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    #preloader{
+  position:fixed; inset:0;
+  background:#0b5b41;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+}
+.loader-logo{
+  font-size:28px;
+  font-weight:900;
+  color:#c9a04a;
+  letter-spacing:2px;
+  animation:pulse 1.6s infinite;
+}
+@keyframes pulse{
+  0%{opacity:.4; transform:scale(.96)}
+  50%{opacity:1; transform:scale(1)}
+  100%{opacity:.4; transform:scale(.96)}
+}
+
+    :root{
+      --bg:#fbfaf9;
+      --card:#ffffff;
+      --muted:#6d6d6d;
+      --gold:#c9a04a;
+      --accent:#0b5b41;
+      --text:#222;
+      --glass: rgba(255,255,255,0.66);
+      --shadow: 0 14px 40px rgba(9,20,18,0.06);
+      --ease: cubic-bezier(.2,.9,.2,1);
+      --max-width:1180px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Montserrat,system-ui,-apple-system,'Segoe UI',Roboto,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:1200;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.78));backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(6,10,8,0.03)}
+    .brand-left{display:flex;align-items:center;gap:14px}
+    .logo-sq{width:64px;height:64px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(11,91,65,0.04)}
+    .logo-sq img{width:52px;height:52px;object-fit:contain}
+    .brand-title{font-weight:900;color:var(--accent);letter-spacing:1px}
+    .brand-sub{font-size:12px;color:var(--muted)}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .btn{padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer;border:0;transition:transform .18s ease}
+    .btn-primary{background:var(--gold);color:#071018;box-shadow:0 10px 28px rgba(184,139,59,0.12)}
+    .btn-primary:hover{transform:translateY(-3px)}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--muted)}
+    .small{font-size:13px;padding:8px 10px;border-radius:8px}
+
+    /* HERO */
+    .hero{position:relative;min-height:66vh;display:flex;align-items:center;justify-content:center;padding:36px 18px;text-align:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.56);transform:translateZ(0);transition:transform 1.6s var(--ease)}
+    .hero-inner{position:relative;z-index:6;max-width:980px;padding:18px}
+    .hero-logo{height:86px;border-radius:12px;box-shadow:0 12px 36px rgba(2,6,8,0.08);margin:0 auto 12px;display:block}
+    .hero-heading{font-family:Lora,serif;font-size:46px;margin:6px 0;color:var(--gold);letter-spacing:1px}
+    .hero-sub{color:rgba(255,255,255,0.95);margin-bottom:12px}
+    .hero-focus{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+    .focus-pill{background:rgba(255,255,255,0.08);padding:8px 12px;border-radius:999px;color:rgba(255,255,255,0.95);font-weight:700}
+
+    /* skyline */
+    .skyline{position:absolute;left:0;right:0;bottom:0;height:120px;z-index:5;pointer-events:none;background-repeat:repeat-x;background-size:contain}
+    .lights{position:absolute;inset:0;background-image:radial-gradient(rgba(255,240,180,0.03) 1px, transparent 2px);opacity:0.86;animation: drift 5.6s linear infinite}
+    @keyframes drift{0%{transform:translateX(0)}100%{transform:translateX(-36px)}}
+
+    /* MAIN */
+    .container{max-width:var(--max-width);margin:0 auto;padding:36px}
+    .section{margin-bottom:42px}
+    .section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+    .section-title h2{margin:0;font-size:20px;color:var(--accent)}
+    .pill{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:700}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+
+    /* CARDS */
+    .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 14px 40px rgba(9,20,18,0.06);transition:transform .36s var(--ease),box-shadow .36s var(--ease),opacity .6s;opacity:0;transform:translateY(20px)}
+    .card.visible{opacity:1;transform:none}
+    .card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(2,6,8,0.08)}
+    .card h3{margin:8px 0 6px}
+    .muted{color:var(--muted)}
+
+    /* HOSPITAL ICON (no image card) */
+    .icon-wrap{width:84px;height:84px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(11,91,65,0.05),rgba(184,139,59,0.03));font-weight:900;color:var(--accent);font-size:30px;margin-bottom:12px}
+
+    /* HIGHLIGHT SECTION */
+    .gold-banner{background:linear-gradient(90deg,var(--gold), #d6a257);padding:14px 18px;border-radius:12px;color:#071018;font-weight:900;box-shadow:0 10px 30px rgba(184,139,59,0.12);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .gold-banner .badge{background:rgba(255,255,255,0.92);padding:6px 10px;border-radius:999px;font-weight:800;color:#071018}
+    .project-card{display:flex;gap:16px;background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--shadow);align-items:center}
+    .project-thumb{width:340px;min-width:140px;height:180px;border-radius:10px;overflow:hidden;flex-shrink:0}
+    .project-thumb img{width:100%;height:100%;object-fit:cover}
+    .project-keys{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .key{background:linear-gradient(90deg, rgba(11,91,65,0.04), rgba(184,139,59,0.03));padding:8px 12px;border-radius:10px;font-weight:700;color:var(--accent)}
+
+    /* CERTIFICATE */
+    .cert-box{background:linear-gradient(180deg,#fff,#fcfcfa);border-radius:10px;padding:12px;border:1px solid rgba(0,0,0,0.04);box-shadow:0 10px 28px rgba(0,0,0,0.04)}
+    .cert-download{display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--accent);color:white;font-weight:800}
+
+    /* CAROUSEL */
+    .carousel{position:relative;overflow:hidden;border-radius:12px}
+    .carousel-track{display:flex;gap:18px;transition:transform .56s ease;will-change:transform}
+    .carousel-item{min-width:300px;background:var(--card);padding:12px;border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,0.04)}
+
+    /* REVEAL / FLOAT / TILT / SHINE helpers */
+    .fade-in-up{opacity:0;transform:translateY(18px);transition:all .64s var(--ease)}
+    .fade-in-up.visible{opacity:1;transform:none}
+    .slide-in-left{opacity:0;transform:translateX(-22px);transition:all .64s var(--ease)}
+    .slide-in-left.visible{opacity:1;transform:none}
+    .zoom-slow{animation: zoomPulse 16s ease-in-out infinite}
+    @keyframes zoomPulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+
+    .float{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+    .tilt{transition:transform .28s ease,box-shadow .28s ease}
+    .tilt:hover{transform:perspective(700px) rotateX(6deg) rotateY(-6deg) scale(1.02);box-shadow:0 30px 70px rgba(0,0,0,0.12)}
+
+    .shine{position:relative;overflow:hidden}
+    .shine::after{content:"";position:absolute;top:0;left:-140%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-20deg);animation:shineMove 3s linear infinite}
+    @keyframes shineMove{0%{left:-140%}50%{left:140%}100%{left:140%}}
+
+    /* FOUNDERS */
+    .founder-card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(18px);transition:all .6s}
+    .founder-card.visible{opacity:1;transform:none}
+
+    /* CONTACT FLOAT BUTTONS */
+    .fab{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:1400}
+    .fab a{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:#25D366;color:white;text-decoration:none;font-size:20px;box-shadow:0 18px 46px rgba(2,6,8,0.12)}
+
+    /* RESPONSIVE */
+    @media(max-width:820px){
+      .project-card{flex-direction:column;align-items:stretch}
+      .project-thumb{width:100%;height:200px}
+      .hero-heading{font-size:30px}
+      .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    }
+  </style>
+</head>
+<body>
+  <!-- PRELOADER -->
+<div id="preloader">
+  <div class="loader-logo">KUSHI ESTATES</div>
+</div>
+  <!-- NAV -->
+  <nav>
+    <div class="brand-left">
+      <div class="logo-sq"><img src="images/logo.png.png" alt="image"></div>
+      <div>
+        <div class="brand-title">KUSHI ESTATES</div>
+        <div class="brand-sub">Layout Sites • Investment Plans • Commercial Growth</div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn btn-ghost small" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+      <button class="btn btn-primary small" onclick="openWhatsApp('Hello, I would like to enquire about Kushi Estates projects.')">WhatsApp</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" aria-label="Kushi Estates Hero">
+    <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1800&q=60');"></div>
+    <div class="hero-inner">
+      <img src="logo.png" class="hero-logo" alt="Kushi Estates logo">
+      <div class="hero-heading float shine">KUSHI ESTATES</div>
+      <p class="hero-sub">Specialists in Layout Sites, Investment Plans and Commercial Growth — Trusted projects across India.</p>
+
+      <div class="hero-focus">
+        <div class="focus-pill">Layout Sites</div>
+        <div class="focus-pill">Investment Plans</div>
+        <div class="focus-pill">Hospital & Franchise Advisory</div>
+        <div class="focus-pill">Project Management</div>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:12px;justify-content:center">
+        <button class="btn btn-primary" onclick="document.getElementById('anakapalli').scrollIntoView({behavior:'smooth'})">Learn About Anakapalli Project</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      </div>
+    </div>
+
+    <div class="skyline" aria-hidden="true" style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 200%22><g fill=%22%23000000%22 opacity=%220.06%22><rect x=%270%27 y=%2740%27 width=%2740%27 height=%27160%27 rx=%273%27/><rect x=%2780%27 y=%2710%27 width=%2780%27 height=%27190%27 rx=%273%27/><rect x=%27180%27 y=%2748%27 width=%2750%27 height=%27150%27 rx=%273%27/><rect x=%27260%27 y=%270%27 width=%2790%27 height=%27200%27 rx=%273%27/><rect x=%27370%27 y=%2760%27 width=%2760%27 height=%27140%27 rx=%273%27/><rect x=%27460%27 y=%2795%27 width=%2730%27 height=%27105%27 rx=%273%27/><rect x=%27520%27 y=%2740%27 width=%2770%27 height=%27160%27 rx=%273%27/><rect x=%27640%27 y=%270%27 width=%27120%27 height=%27200%27 rx=%273%27/></g></svg>');">
+      <div class="lights"></div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container">
+
+    <!-- ANAKAPALLI HIGHLIGHT -->
+    <section id="anakapalli" class="section">
+      <div class="gold-banner fade-in-up visible">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:18px">🔥 <strong>VMRDA Approved 200 Acre Mega Layout — Anakapalli</strong></div>
+          <div style="font-size:13px;color:#071018;opacity:0.95">Ongoing | Strategic layout development • Phase-1 ready parcels • High ROI potential</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="badge" style="padding:6px 10px;border-radius:999px;background:#fff;font-weight:800;color:#071018">200 ACRES • VMRDA APPROVED</div>
+
+          <div class="seal" title="VMRDA Seal (visual)">
+            <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="50" cy="50" r="44" stroke="#0b5b41" stroke-width="3" fill="#fff"/>
+              <text x="50" y="54" font-size="10" font-weight="700" text-anchor="middle" fill="#0b5b41">VMRDA</text>
+              <text x="50" y="66" font-size="7" text-anchor="middle" fill="#b88b3b">APPROVED</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px" class="project-card tilt fade-in-up visible">
+        <div class="project-thumb">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=70" alt="Anakapalli Layout aerial">
+        </div>
+        <div class="project-body">
+          <h3 style="margin-top:0">Anakapalli Mega Layout — VMRDA Approved</h3>
+          <p class="muted">
+            Kushi Estates is developing a major VMRDA-approved 200 acre layout near Anakapalli (PIN 531001). The layout features an 80-feet main road with 40-feet internal roads, ready parcels in Phase-1, and adjacent building clusters on one side with open farmland on the other.
+          </p>
+
+          <div class="project-keys">
+            <div class="key">Phase-1: Ready Parcels</div>
+            <div class="key">80 ft Main Road • 40 ft Internal Roads</div>
+            <div class="key">Infrastructure & Utilities</div>
+            <div class="key">High ROI • Long-term Growth</div>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:14px;align-items:center">
+            <button class="btn btn-primary" onclick="openModal('Anakapalli Project','VMRDA Approved 200 Acre Layout at Anakapalli. Request brochure, site visit & investment plan.')">Request Brochure</button>
+            <a class="btn btn-ghost" href="VMRDA_Certificate.pdf" download>Download Certificate (PDF)</a>
+            <a class="btn btn-ghost" href="https://www.google.com/maps?q=17.6911,83.0039" target="_blank" rel="noopener">View Location</a>
+          </div>
+
+          <p class="muted" style="margin-top:12px;font-size:13px">Flagship layout project — ideal for investors, developers and franchise rollouts. Site visits available on request.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;margin-top:12px">
+        <div class="cert-box">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="font-weight:800">VMRDA Certificate</div>
+            <div style="font-size:13px;color:var(--muted)">Official approval document</div>
+          </div>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <a class="cert-download" href="VMRDA_Certificate.pdf" download>⬇ Download PDF</a>
+            <button class="btn btn-ghost" onclick="openCertificatePreview()">Preview</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <div class="pill">Hostels • Developers • Showrooms • Hospitals</div>
+      </div>
+
+      <div class="grid">
+        <div class="card tilt fade-in-up" data-title="Hostel Facilities" data-content="Managed secure hostels with amenities.">
+          <img src="https://images.unsplash.com/photo-1560184897-1b3b9d0e0c4f?auto=format&fit=crop&w=1200&q=72" alt="Hostel">
+          <h3>Hostel Facilities</h3>
+          <p class="muted">Managed student & professional housing with security, housekeeping and connected services.</p>
+          <div style="margin-top:10px"><button class="btn btn-ghost" onclick="openModal('Hostel Facilities','Managed hostels with 24/7 security, WiFi and housekeeping.')">View</button></div>
+        </div>
+
+        <div class="card tilt fade-in-up">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=72" alt="Developers">
+          <h3>Property Developers</h3>
+          <p class="muted">We partner with vetted developers to deliver apartments, villas and mixed-use projects with legal diligence.</p>
+          <div style="margin-top:10px"><button class="btn btn-ghost" onclick="openModal('Developers','Developer partnerships with due-diligence and delivery oversight.')">View</button></div>
+        </div>
+
+        <div class="card tilt fade-in-up">
+          <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1200&q=72" alt="Showrooms">
+          <h3>Showrooms & Franchises</h3>
+          <p class="muted">High-footfall locations and mall-front spots ideal for brand expansion.</p>
+          <div style="margin-top:10px"><button class="btn btn-ghost" onclick="openModal('Showrooms & Franchises','Site selection for showrooms & franchises with footfall analysis.')">View</button></div>
+        </div>
+
+        <div class="card tilt fade-in-up">
+          <div class="icon-wrap" aria-hidden="true" title="Hospital icon">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="9" y="3" width="6" height="18" rx="1.5" fill="#0b5b41"/>
+              <rect x="3" y="9" width="18" height="6" rx="1.5" fill="#b88b3b"/>
+            </svg>
+          </div>
+          <h3>Hospital & Clinic Sites</h3>
+          <p class="muted">Advisory for accessible, utility-ready and compliant locations suitable for medium & large healthcare facilities.</p>
+          <div style="margin-top:10px"><button class="btn btn-ghost" onclick="openModal('Hospital Sites','Site shortlists near hospitals, arterial roads and public transport hubs—ideal for clinics and medium hospitals.')">View</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIZAG ON-GOING PROJECT -->
+    <section class="section">
+      <div class="section-title">
+        <h2>Ongoing Project — Near Vizag (Visakhapatnam)</h2>
+        <div class="pill">Vizag • Coastal Growth</div>
+      </div>
+
+      <div class="grid">
+        <div class="card slide-in-left zoom-slow visible">
+          <h3>Mixed-Use Development near Vizag Beach Road</h3>
+          <p class="muted">Our ongoing project near Vizag focuses on mixed-use living with residential towers, retail podiums and dedicated medical blocks — positioned for port-led growth, tourism and industrial expansion.</p>
+          <ul class="muted" style="margin-top:10px">
+            <li><strong>Top hospital zones:</strong> Dwaraka Nagar, MVP Colony, Madhurawada — connected, accessible and suitable for healthcare.</li>
+            <li><strong>Franchise hotspots:</strong> Beach Road, MVP Colony — great footfall and visibility.</li>
+            <li><strong>Investment thesis:</strong> Port & infrastructure expansion leading to rising property appreciation.</li>
+          </ul>
+          <div style="display:flex;gap:10px;margin-top:12px">
+            <button class="btn btn-primary" onclick="openModal('Vizag Project','Our Vizag development combines residential, retail and healthcare-ready plots. Contact us for site visit & investment brief.')">Request Brief</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/Visakhapatnam" target="_blank" rel="noopener">Open Map</a>
+          </div>
+        </div>
+
+        <div class="card slide-in-left visible">
+          <h3>Vizag Snapshot</h3>
+          <p class="muted">Visakhapatnam (Vizag) is a fast-growing east-coast city with strong infrastructure investment: port expansion, defense & IT growth. Our selection targets connectivity, utilities and patient access for healthcare projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS CAROUSEL -->
+    <section id="projects" class="section">
+      <div class="section-title">
+        <h2>Featured Projects</h2>
+        <div class="pill">Luxury • Hostel • Commercial</div>
+      </div>
+
+      <div class="carousel">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-item card">
+            <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=60" alt="Luxury apartment">
+            <strong>Luxury Apartments — Hyderabad</strong>
+            <p class="muted">Rooftop pool, concierge & premium finishes.</p>
+          </div>
+
+          <div class="carousel-item card">
+            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=60" alt="Hostel complex">
+            <strong>Hostel Complex — Vizag</strong>
+            <p class="muted">Secure modern hostels near colleges.</p>
+          </div>
+
+          <div class="carousel-item card">
+            <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=900&q=60" alt="Commercial tower">
+            <strong>Commercial Tower — Mumbai</strong>
+            <p class="muted">Prime office floors & retail podiums.</p>
+          </div>
+        </div>
+
+        <div style="position:absolute;right:12px;top:12px;display:flex;gap:8px">
+          <button class="btn btn-ghost" id="prevBtn">←</button>
+          <button class="btn btn-ghost" id="nextBtn">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE -->
+    <section class="section">
+      <div class="section-title">
+        <h2>Why Choose Kushi Estates</h2>
+        <div class="pill">Trusted • Nationwide</div>
+      </div>
+
+      <div class="grid">
+        <div class="card fade-in-up visible">
+          <h3>Our Strengths</h3>
+          <ul class="muted">
+            <li>120+ projects delivered across India</li>
+            <li>Specialized site-selection for franchises, hospitals & showrooms</li>
+            <li>Legal diligence and transparent pricing</li>
+            <li>End-to-end delivery & after-sales management</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in-up visible">
+          <h3>Quick Facts</h3>
+          <p style="font-size:18px;color:var(--accent)"><strong><span class="counter" data-target="120">0</span>+</strong> Projects • <strong><span class="counter" data-target="15">0</span>+</strong> Cities</p>
+          <div style="margin-top:8px;">
+            <button class="btn btn-primary" onclick="openWhatsApp('Hello, I would like to talk about Kushi Estates projects.')">WhatsApp</button>
+            <button class="btn btn-ghost" onclick="location.href='mailto:kushwanthkushi2000@gmail.com'">Email</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="section">
+      <div class="section-title">
+        <h2>Leadership</h2>
+        <div class="pill">Vision & Delivery</div>
+      </div>
+
+      <div class="founder-row">
+        <div class="founder-card visible">
+          <div class="founder-name">Mr. Karri Kushwanth</div>
+          <div class="founder-role muted">Owner & Chairman</div>
+          <p class="muted">Visionary leader steering strategic growth and premium development standards for Kushi Estates.</p>
+        </div>
+
+        <div class="founder-card visible">
+          <div class="founder-name">Mr. Rameswara Rao</div>
+          <div class="founder-role muted">Managing Director</div>
+          <p class="muted">Operational head responsible for project delivery, partner relationships and client satisfaction.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+      <h2>Testimonials</h2>
+      <div class="carousel" style="margin-top:12px">
+        <div class="carousel-track" id="testiTrack">
+          <div class="carousel-item testimonial card">
+            <strong>Rahul — Hyderabad</strong>
+            <p class="muted">"Kushi Estates delivered an immaculate property, on time and with excellent after-sales."</p>
+          </div>
+          <div class="carousel-item testimonial card">
+            <strong>Dr. Meera — Chennai</strong>
+            <p class="muted">"Site suggestion for our clinic was perfect — accessibility and setup were ideal."</p>
+          </div>
+          <div class="carousel-item testimonial card">
+            <strong>S. Nair — Pune</strong>
+            <p class="muted">"Professional and trustworthy — recommended for franchise rollout."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+<a class="ai-assist" href="https://wa.me/919381385057?text=Hi%20AI%20Advisor%2C%20suggest%20best%20property%20for%20me">
+  🤖 AI Advisor
+</a>
+.ai-assist{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  background:#0b5b41;
+  color:#fff;
+  padding:12px 14px;
+  border-radius:30px;
+  font-weight:800;
+  z-index:1400;
+}
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <div class="pill">Get a Free Site Suggestion</div>
+      </div>
+
+      <div class="grid">
+        <div class="card visible">
+          <p><strong>Email:</strong> <a href="mailto:kushwanthkushi2000@gmail.com">kushwanthkushi2000@gmail.com</a><br>
+          <strong>WhatsApp:</strong> <a href="https://wa.me/919381385057">9381385057</a></p>
+          <p class="muted">We prepare free site suggestions for franchises, hospital locations, showrooms, hostels & apartment developments. For immediate enquiries, message us on WhatsApp.</p>
+          <div style="margin-top:10px">
+            <button class="btn btn-primary" onclick="openWhatsApp('Hi, I would like more information about Kushi Estates.')">Message on WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="card visible">
+          <h3>Office Map</h3>
+          <iframe class="map-embed" src="https://www.google.com/maps?q=17.6911,83.0039&z=15&output=embed" aria-label="Anakapalli map"></iframe>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3>Request a Proposal (instantly via WhatsApp)</h3>
+        <form id="contactForm" style="margin-top:10px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <input name="name" placeholder="Your name" required>
+            <input name="email" placeholder="Your email" type="email" required>
+          </div>
+          <input name="phone" placeholder="Mobile / WhatsApp (optional)" style="margin-top:8px">
+          <select name="interest" required style="padding:12px;border-radius:8px;border:1px solid #e6e9ec;margin-top:8px">
+            <option value="">Choose interest — Franchise / Hospital / Showroom / Hostel / Investment</option>
+            <option>Franchise</option><option>Hospital</option><option>Showroom</option><option>Hostel</option><option>Investment</option>
+          </select>
+          <textarea name="message" rows="4" placeholder="Project details or query" required style="margin-top:8px"></textarea>
+
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
+            <button type="reset" class="btn btn-ghost">Reset</button>
+          </div>
+          <div id="contactStatus" class="muted" style="margin-top:8px"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="padding:22px;text-align:center;color:var(--muted)">
+    © 2025 KUSHI ESTATES — Layout Sites • Investment Plans • Commercial Growth
+  </footer>
+
+  <!-- FAB -->
+  <div class="fab" aria-hidden="false">
+    <a class="call" href="tel:+919381385057" title="Call">📞</a>
+    <a href="https://wa.me/919381385057" title="WhatsApp">💬</a>
+  </div>
+
+  <!-- MODALS -->
+  <div id="modal" class="modal" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);z-index:2000">
+    <div class="box" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="background:var(--card);padding:18px;border-radius:12px;max-width:720px;width:94%;box-shadow:0 24px 60px rgba(2,6,8,0.18);transform:translateY(12px);">
+      <h3 id="modalTitle">Title</h3>
+      <div id="modalBody" class="muted">Details...</div>
+      <div style="text-align:right;margin-top:12px"><button class="btn btn-ghost" onclick="closeModal()">Close</button></div>
+    </div>
+  </div>
+
+  <div id="certModal" class="modal" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:2000">
+    <div class="box" style="max-width:900px;background:var(--card);padding:18px;border-radius:12px;">
+      <h3>VMRDA Certificate (Preview)</h3>
+      <div style="margin-top:8px">
+        <iframe id="certFrame" src="VMRDA_Certificate.pdf" style="width:100%;height:520px;border:0;border-radius:8px;"></iframe>
+      </div>
+      <div style="text-align:right;margin-top:12px"><button class="btn btn-ghost" onclick="closeCertPreview()">Close</button></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // helpers
+    const $ = (s, ctx=document) => ctx.querySelector(s);
+    const $$ = (s, ctx=document) => Array.from((ctx||document).querySelectorAll(s));
+
+    // Reveal on scroll
+    const revealObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.18});
+    $$('.fade-in-up, .card, .founder-card, .slide-in-left').forEach(el=>revealObserver.observe(el));
+
+    // Hero subtle parallax
+ (function(){
+      const hero = document.querySelector('.hero');
+      if(!hero) return;
+      window.addEventListener('mousemove', e=>{
+        const x = (e.clientX - window.innerWidth/2)/window.innerWidth*8;
+        const y = (e.clientY - window.innerHeight/2)/window.innerHeight*6;
+        document.querySelectorAll('.hero-bg').forEach((el,i)=>{
+          const depth = (i+1)*0.7;
+          el.style.transform = `translate3d(${x*depth}px, ${y*depth}px, 0) scale(${1 + i*0.003})`;
+        });
+      });
+    })();
+
+    // Carousel (projects)
+    (function(){
+      const track = document.getElementById('carouselTrack');
+      if(!track) return;
+      const items = Array.from(track.children);
+      let idx = 0;
+      function show(n){
+        idx = ((n % items.length) + items.length) % items.length;
+        const w = items[0].getBoundingClientRect().width + 18;
+        track.style.transform = `translateX(${ -idx * w }px)`;
+      }
+      const prev = document.getElementById('prevBtn'), next = document.getElementById('nextBtn');
+      if(prev && next){
+        prev.addEventListener('click', ()=> show(idx-1));
+        next.addEventListener('click', ()=> show(idx+1));
+      }
+      let auto = setInterval(()=> show(idx+1), 3800);
+      track.addEventListener('pointerdown', ()=>{ clearInterval(auto); auto = null; });
+      window.addEventListener('pointerup', ()=> { if(!auto) auto = setInterval(()=> show(idx+1), 3800); });
+      window.addEventListener('resize', ()=> show(idx));
+      window.addEventListener('load', ()=> show(0));
+    })();
+
+    // Testimonials slider
+    (function(){
+      const tTrack = document.getElementById('testiTrack');
+      if(!tTrack) return;
+      const items = Array.from(tTrack.children);
+      let i = 0;
+      setInterval(()=>{
+        i = (i + 1) % items.length;
+        const w = items[0].getBoundingClientRect().width + 18;
+        tTrack.style.transform = `translateX(${ -i * w }px)`;
+        tTrack.style.transition = 'transform .6s ease';
+      }, 4200);
+    })();
+
+    // Counters
+    $$('[data-target].counter, .counter').forEach(el=>{
+      const target = +el.dataset.target || +el.textContent || 0;
+      let v = 0;
+      const step = Math.max(1, Math.floor(target/80));
+      const iv = setInterval(()=>{
+        v += step;
+        if(v >= target){ el.textContent = target; clearInterval(iv); } else el.textContent = v;
+      }, 18);
+    });
+
+    // Modal functions
+    function openModal(title, body){
+      const m = $('#modal');
+      $('#modalTitle').textContent = title;
+      $('#modalBody').textContent = body;
+      m.style.display = 'flex'; m.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){ const m = $('#modal'); m.style.display = 'none'; m.setAttribute('aria-hidden','true'); }
+
+    function openCertificatePreview(){
+      const el = $('#certModal'); el.style.display = 'flex'; el.setAttribute('aria-hidden','false');
+    }
+    function closeCertPreview(){ const el = $('#certModal'); el.style.display = 'none'; el.setAttribute('aria-hidden','true'); }
+
+    // WhatsApp helper (prefill)
+    function openWhatsApp(text){
+      const phone = '919381385057';
+      const msg = encodeURIComponent(text || '');
+      const url = `https://wa.me/${phone}?text=${msg}`;
+      window.open(url,'_blank');
+    }
+
+    // Contact form: open WhatsApp with prefilled message
+    const cf = $('#contactForm');
+    if(cf){
+      cf.addEventListener('submit', e=>{
+        e.preventDefault();
+        const fd = new FormData(cf);
+        const data = Object.fromEntries(fd.entries());
+        if(!data.name || !data.email || !data.message){
+          $('#contactStatus').textContent = 'Please fill required fields.';
+          return;
+        }
+        const msg = `Kushi Estates enquiry:
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone || 'N/A'}
+Interest: ${data.interest}
+Message: ${data.message}`;
+        openWhatsApp(msg);
+        $('#contactStatus').textContent = 'Opening WhatsApp — please send to complete enquiry.';
+      });
+    }
+
+    // Defensive: set rel noopener for external links
+    document.querySelectorAll('a[target="_blank"]').forEach(a=>a.setAttribute('rel','noopener'));
+
+    // remove modal on escape
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); closeCertPreview(); }});
+
+  window.addEventListener('load',()=>{
+  const p=document.getElementById('preloader');
+  if(p){ p.style.opacity=0; setTimeout(()=>p.remove(),600); }
+});
+</script>
+</body>
+</html>
+
+
